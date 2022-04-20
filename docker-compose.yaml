@@ -1,0 +1,15 @@
+#
+# This config is just an example, feel free to mess around with it ;)
+#
+
+version: "3"
+services:
+
+  nginx:
+    # image: theclocktwister/nginx-auth
+    build: .
+    network_mode: host            # bypass Docker's proxy, so you get the
+                                  # client's real IP and not the Docker ones
+    volumes:
+      - ./example.conf:/etc/nginx/nginx.conf # your Nginx main configuration
+      - ./logs:/var/log/nginx     # your log folder (can be set in config)
